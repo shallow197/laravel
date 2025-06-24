@@ -1,0 +1,201 @@
+:root {
+  --primary: #8789f0;        /* Violet */
+  --secondary: #06b6d4;      /* Cyan */
+  --accent: #f59e42;         /* Orange */
+  --success: #22c55e;        /* Green */
+  --danger: #ef4444;         /* Red */
+  --warning: #fbbf24;        /* Yellow */
+  --info: #3b82f6;           /* Blue */
+  --background: #051123;     /* Bleu foncé */
+  --surface: #051123;        /* Surface bleu foncé */
+  --text: #f1faee;           /* Texte clair */
+  --text-light: #f1faee;
+  --border: #33415c;
+  --row-even: #193153;       /* Bleu foncé légèrement différent */
+  --row-odd: #16213e;        /* Bleu foncé encore plus profond */
+}
+
+
+
+/* Fond général sur html pour couvrir tout l'écran */
+html, body {
+  background: var(--background) !important;
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Container principal */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+
+/* Titres */
+h1, h2, h3, h4 {
+  color: #fff !important;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+/* Liens */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Boutons */
+button, .btn {
+  background: linear-gradient(90deg, var(--accent), var(--warning));
+  color: var(--text);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(245,158,66,0.08);
+}
+button:hover, .btn:hover {
+  background: linear-gradient(90deg, var(--warning), var(--accent));
+  box-shadow: 0 4px 16px rgba(251,191,36,0.12);
+}
+
+/* Formulaires */
+input[type="text"], input[type="date"], select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 1.2em;
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 0.4em;
+  font-weight: 600;
+  color: #fff !important;
+}
+
+/* Alertes */
+.alert {
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 1.5em;
+  font-size: 1rem;
+}
+.alert-success {
+  background: #193153;
+  color: var(--success);
+  border: 1px solid #22c55e;
+}
+.alert-danger {
+  background: #16213e;
+  color: var(--danger);
+  border: 1px solid #ef4444;
+}
+
+/* Tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  margin-bottom: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+}
+th {
+  background: #051123;
+  color: var(--text-light);
+  font-weight: 700;
+}
+td {
+  border-bottom: 1px solid var(--border);
+
+}
+tr:last-child td {
+  border-bottom: none;
+}
+tbody tr:nth-child(even) td {
+  background: #f1f2f4;
+}
+tbody tr:nth-child(odd) td {
+  background: #f1f2f4;
+}
+tbody tr:hover td {
+  background: #f1f2f4;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .container {
+    padding: 10px;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1.2em;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 10px;
+  }
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    min-height: 40px;
+  }
+  td::before {
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    font-weight: 600;
+    color: var(--secondary);
+    content: attr(data-label);
+  }
+  
+}
+
+
+  p.text-sm {
+  color: #fff !important;
+}
