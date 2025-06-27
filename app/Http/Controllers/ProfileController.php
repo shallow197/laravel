@@ -90,5 +90,30 @@ class ProfileController extends Controller
 
 
     }
+
+    public function dashboardadmin(Request $request)
+    {
+     
+         $identifiants = $request->only('email', 'password', 'role');
+         $remember = $request->boolean('remember');
+
+    if (Auth::attempt($identifiants, $remember)&& Auth::user()->role
+ === "admin") 
+    {
+        $request->session()->regenerate();
+        return redirect()->intended(RouteServiceProvider::HOME);
+    } 
+
+
+    else
+    {
+        return redirect()->back()->withErrors([
+            'email' => "Les identifiants fournis ne correspondent à aucun compte.",
+        ]);
+
+    }
+
+
+    }
     
 }

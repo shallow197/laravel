@@ -15,7 +15,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="GET" action="{{ route('admin.verif') }}">
+    <form method="POST" action="{{ route('admin.verif') }}">
         @csrf
 
         <!-- Email Address -->

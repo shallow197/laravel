@@ -1,6 +1,8 @@
 <x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
- @if(session('success'))
+     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
@@ -12,10 +14,7 @@
         </div>
     @endif
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('admin.login.post') }}">
         @csrf
 
         <!-- Email Address -->
@@ -48,7 +47,7 @@
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    {{ __('Mot de passe oublié ?') }}
                 </a>
             @endif
 
@@ -56,7 +55,14 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
-        <a href="{{ route('register') }}" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-            {{ __('Pas de compte ?  Inscrivez-vous') }}
+
+        <br>
+
+        <x-primary-button class="ms-3">
+        <a href="{{ route('register') }}" 
+        class="inline-flex items-center px-4 py-0 bg-indigo-600 font-semibold rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">
+        &#128100; Créer compte
+</a>
+</x-primary-button>
     </form>
 </x-guest-layout>

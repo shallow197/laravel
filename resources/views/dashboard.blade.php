@@ -50,7 +50,7 @@
                                 <td class="border px-3 py-1">{{ $utilisateur->name }}</td>
                                 <td class="border px-3 py-1">{{ $utilisateur->email }}</td>
                                 <td class="border px-3 py-1">
-                                    <a href="{{ route('voirplus', ['id' => $utilisateur->id]) }}" class="text-blue-500">Voir plus</a>
+                                    <a href="{{ route('voirplus', ['id' => $utilisateur->id]) }}" class="text-blue-500">  Voir plus  &#128269;</a>
                                 </td>
                             </tr>
                         @empty
@@ -143,24 +143,21 @@
                                     <td class="border px-4 py-1">{{ $tache->commentaires }}</td>
                                     
                                     <td>
-                                        <a href="{{ route('update.form', ['id' => $tache->id]) }}" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">modifier</a> |
-                                        <form action="{{ route('delete', ['id' => $tache->id]) }}" method="POST" style="display:inline" onsubmit="return confirm('Êtes-vous sûr(e) ?');">
-                                            @csrf
-                                         
-                                            <button type="submit" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">supprimer</button>
-                                        </form>
+                                        <a href="{{ route('update.form', ['id' => $tache->id]) }}" class="inline-block mt-4 bg-red-600 text-white px-5 py-3 rounded hover:bg-red-700"> modifier &#9998;</a> 
+                                         <a href="{{ route('delete', ['id' => $tache->id]) }}"  class="inline-block mt-4 bg-red-600 text-white px-5 py-3 rounded hover:bg-red-700" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer cette tâche ?');">supprimer  &#128465;</a>
+
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="10" class="text-center py-4">Aucune tâche pour l'instant.</td>
+                                    <td colspan="13" class="text-center py-4">Aucune tâche pour l'instant.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
 
                     <button type="submit" onclick="return confirm('Confirmer la suppression ?');" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                        Supprimer
+                        Supprimer &#128465;
                     </button>
                 </form><br><br>
 

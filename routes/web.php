@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/page_login', function () {
+Route::match(['get','post'], '/page_login', function () {
     return view('auth.login');
 })->name('login');
 
@@ -43,7 +43,7 @@ Route::get('update_task/{id}/edit', [AuthenticatedSessionController::class, 'edi
 
 Route::post('update_task/{id}', [AuthenticatedSessionController::class, 'update_task'])->middleware(['auth', 'verified'])->name('update.save');
 
-Route::post('delete_task/{id}', [AuthenticatedSessionController::class, 'delete_task'])->middleware(['auth', 'verified'])->name('delete');
+Route::get('delete_task/{id}', [AuthenticatedSessionController::class, 'delete_task'])->middleware(['auth', 'verified'])->name('delete');
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
@@ -59,4 +59,8 @@ Route::get('/', function()
     return view('auth.admin');
 })->name('admin.login');
 
-Route::GET('/adminverif', [ProfileController::class, 'adminlogin'])->name('admin.verif');
+Route::POST('/adminverif', [ProfileController::class, 'adminlogin'])->name('admin.verif');
+
+Route::POST('adminlogin', [ProfileController::class, 'admindashboard'])
+    ->name('admin.login.post')
+    ->middleware('guest');
