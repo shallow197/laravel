@@ -61,6 +61,6 @@ Route::get('/', function()
 
 Route::POST('/adminverif', [ProfileController::class, 'adminlogin'])->name('admin.verif');
 
-Route::POST('adminlogin', [ProfileController::class, 'admindashboard'])
+Route::POST('adminlogin', [ProfileController::class, 'dashboardadmin'])
     ->name('admin.login.post')
     ->middleware('guest');
